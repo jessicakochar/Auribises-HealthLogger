@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .centered-text {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Welcome to Health Logger Home Page</h2>
+
+<div class="centered-text">
+    <h3>Log your Health Data</h3>
+</div>
+<form (ngSubmit)="onSubmit()">
+    <label for="bloodPressureHigh">Blood Pressure High: </label>
+    <input type="number" name="bloodPressureHigh" placeholder="Enter Your Blood Pressure(High)" [(ngModel)]="bloodPressureHigh">
+    <br>
+
+    <label for="bloodPressureLow">Blood Pressure Low: </label>
+    <input type="number" name="bloodPressureLow" placeholder="Enter Your Blood Pressure(Low)" [(ngModel)]="bloodPressureLow">
+    <br>
+
+    <label for="sugar">Sugar Level: </label>
+    <input type="number" name="sugar" placeholder="Enter Your Sugar Level" [(ngModel)]="sugar">
+    <br>
+    
+    <button type="submit">Save Health Parameters</button>
+</form>
+<br>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>BP High</th>
+        <th>BP Low</th>
+        <th>Sugar</th>
+    </tr>
+    <tr *ngFor="let log of healthlogs$ | async">
+        <td>{{ log.createdOn * 1000 | date: 'dd/MM/yyyy | hh:mm' }}</td>
+        <td>{{ log.bloodPressureHigh }}</td>
+        <td>{{ log.bloodPressureLow }}</td>
+        <td>{{ log.sugar }}</td>
+    </tr>
+</table>
+
+</body>
+</html>

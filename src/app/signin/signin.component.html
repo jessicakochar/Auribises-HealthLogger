@@ -1,0 +1,32 @@
+<h2>Welcome to Health Logger Application</h2>
+<head>
+    <style>
+        .centered-text {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<div class="centered-text">
+    <h3>Sign-In with Email & Password</h3>
+</div>
+<form (ngSubmit)="onSubmit()">
+    <label for="email">Email: </label>
+    <input type="text" name="email" placeholder="Enter Your Email" [(ngModel)]="email">
+    <br>
+
+    <label for="password">Password: </label>
+    <input type="password" name="password" placeholder="Enter Your Password" [(ngModel)]="password">
+    <br>
+
+
+    
+    <button type="submit">Sign In</button>
+     
+    <br>
+    <p><a routerLink="/register" routerLinkActive="active">New User? Register Here</a></p>
+
+</form>
